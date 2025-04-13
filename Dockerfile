@@ -4,7 +4,7 @@ RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list.d/debi
     env DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends samba samba-common-bin && \
     rm -rf /var/lib/apt/lists/* && \
     echo -e "123424\n123424" | smbpasswd -s -a  root && \
-    echo -e "123424\n123424" | smbpasswd -s -a  zz && \
+    useradd zz && echo -e "123424\n123424" | smbpasswd -s -a  zz && \
     /sbin/service smbd restart && /sbin/service smb enable 
 EXPOSE 137/udp 138/udp 139 445
 VOLUME ["/etc", "/var/cache/samba", "/var/lib/samba", "/var/log/samba",\
