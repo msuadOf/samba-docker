@@ -4,7 +4,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     echo -e "123424\n123424" | smbpasswd -s -a  root && \
     useradd zz && echo -e "123424\n123424" | smbpasswd -s -a  zz && \
-    /sbin/service smbd restart && /sbin/service smb enable 
+    systemctl enable smbd && /sbin/service smbd enable 
 EXPOSE 137/udp 138/udp 139 445
 VOLUME ["/etc", "/var/cache/samba", "/var/lib/samba", "/var/log/samba",\
             "/run/samba"]
