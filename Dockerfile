@@ -1,7 +1,7 @@
 FROM debian:bookworm
 RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list.d/debian.sources && \
     apt-get update && \
-    env DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends samba samba-common-bin && \
+    env DEBIAN_FRONTEND=noninteractive apt-get install -y samba samba-common-bin && \
     rm -rf /var/lib/apt/lists/* && \
     echo -e "123424\n123424" | smbpasswd -s -a  root && \
     useradd zz && echo -e "123424\n123424" | smbpasswd -s -a  zz && \
